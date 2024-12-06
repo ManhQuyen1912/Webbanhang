@@ -8,6 +8,7 @@
         <link href="{%static 'app/css/style.css' %}" rel="stylesheet">
         <link href="{%static 'app/css/owl.carousel.min.css' %}" rel="stylesheet">
         <link href="{%static 'app/css/all.min.css' %}" rel="stylesheet">
+        <link href="{%static 'app/css/main.css' %}" rel="stylesheet">
         <title>HomePage</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,6 +73,7 @@
             </div>
         </nav>
         <!-- Main Body -->
+        {% block banner_slider %}{% endblock banner_slider %}
         {% block main-content %}{% endblock main-content %}
         <!-- Footer -->
         <footer class="container--fluid bg-success text-center fixed-bottom p-2 mt-5">
