@@ -13,7 +13,7 @@ def cart(req):
         items = order.orderitem_set.all()
     else:
         items = []
-        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        order = {'order.get_cart_items':0,'order.get_sum_money':0}
     context={'items': items,'order':order}
     return render(req,'app/cart.html',context)
 def checkout(req):
