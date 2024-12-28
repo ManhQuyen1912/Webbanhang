@@ -12,7 +12,8 @@ def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            Customer.objects.create(user=user)
             return redirect('login')
     context = {'form': form}
     return render(request, 'app/register.html', context)
@@ -92,3 +93,19 @@ def updateItem(req):
     if orderItem.quantity<=0:
         orderItem.delete()
     return JsonResponse('added',safe = False)
+
+def search(req):
+    if req.method == "POST":
+        searched = req.POST["searched"]
+        keys = Product.objects.filter(name__contains = searched)
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer,complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        cartItems = order['get_cart_items']
+    products = Product.objects.all()
+    return render(req,'app/search.html',{"searched":searched,"keys":keys,'products':products,'cartItems':cartItems})

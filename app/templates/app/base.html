@@ -46,8 +46,9 @@
                     <a class="nav-link" href="#">Contact</a>
                   </li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
+                  {% csrf_token %}
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <ul class="navbar-nav mb-2 mb-lg-0">
@@ -77,6 +78,7 @@
         {% block checkout_content %}{% endblock checkout_content %}
         {% block register %}{% endblock register %}
         {% block login %}{% endblock login %}
+        {% block search %}{% endblock search %}
         <!-- Footer -->
         <footer class="container--fluid bg-success text-center fixed-bottom p-2 mt-5">
             copyright 2024
