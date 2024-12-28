@@ -51,22 +51,16 @@
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      User
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">My Accout</a></li>
-                      <li><a class="dropdown-item" href="{% url 'cart' %}">Orders</a></li>
-                      <li><a class="dropdown-item" href="#">Exit</a></li>
-                    </ul>
-                  </li>
+                  <div class="d">
+                    <span>Hello {{request.user}}</span>
+                    <span><a href="{% url 'logout' %}">Logout</a></span>
+                  </div>
                   
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Sign up</a>
+                    <a class="nav-link" href="{% url 'register' %}">Sign up</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Sign in</a>
+                    <a class="nav-link" href="{% url 'login' %}">Sign in</a>
                   </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">

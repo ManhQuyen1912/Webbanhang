@@ -3,6 +3,9 @@ from django.http import HttpResponse,JsonResponse
 from .models import *
 import json
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
+
 # Create your views here.
 def register(request):
     form = CreateUserForm()
@@ -13,9 +16,26 @@ def register(request):
             return redirect('login')
     context = {'form': form}
     return render(request, 'app/register.html', context)
-def login(req):
+
+def loginPage(req):
+    if req.user.is_authenticated:
+        return redirect('home')
+    if req.method == "POST":
+        username = req.POST.get('username')
+        password = req.POST.get('password')
+        user = authenticate(req,username=username,password=password)
+        if user is not None:
+            login(req,user)
+            return redirect('home')
+        else:
+            messages.info(req,'User or password not correct!')
     context = {}
     return render(req,'app/login.html',context)
+
+def logoutPage(req):
+    logout(req)
+    return redirect('login')
+
 def home(req):
     if req.user.is_authenticated:
         customer = req.user.customer
@@ -29,6 +49,7 @@ def home(req):
     products = Product.objects.all()
     context={'products': products,'cartItems': cartItems}
     return render(req,'app/home.html',context)
+
 def cart(req):
     if req.user.is_authenticated:
         customer = req.user.customer
@@ -41,6 +62,7 @@ def cart(req):
         cartItems = order['get_cart_items']
     context={'items': items,'order':order,'cartItems': cartItems}
     return render(req,'app/cart.html',context)
+
 def checkout(req):
     if req.user.is_authenticated:
         customer = req.user.customer
@@ -53,6 +75,7 @@ def checkout(req):
         cartItems = order['get_cart_items']
     context={'items': items,'order':order,'cartItems': cartItems}
     return render(req,'app/checkout.html',context)
+
 def updateItem(req):
     data = json.loads(req.body)
     productId = data['productId']
