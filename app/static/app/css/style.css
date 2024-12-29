@@ -84,3 +84,8 @@
 .goodnesssec a{
     text-decoration: none;
 }
+
+.product-image {
+    max-height: 400px;
+    object-fit: cover;
+}

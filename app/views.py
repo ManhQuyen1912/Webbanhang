@@ -173,3 +173,29 @@ def category(req):
         'user_login':user_login
     }
     return render(req,'app/category.html',context)
+
+def detail(req):
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer,complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "show"
+        user_login = "hidden"
+    else:
+        items = []
+        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        cartItems = order['get_cart_items']
+        user_not_login = "hidden"
+        user_login = "show"
+    id = req.GET.get('id','')
+    products = Product.objects.filter(id=id)
+    categories = Category.objects.filter(is_sub = False)
+    context = {
+        'products':products,
+        'categories':categories,
+        'cartItems':cartItems,
+        'user_not_login':user_not_login,
+        'user_login':user_login
+    }
+    return render(req,'app/detail.html',context)

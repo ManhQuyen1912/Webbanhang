@@ -26,6 +26,7 @@ class Customer(models.Model):
         return self.name
 
 class Product(models.Model):
+    detail = models.TextField(null=True,blank=True)
     category = models.ManyToManyField(Category,related_name='product')
     name = models.CharField(max_length=200,null=True)
     price = models.FloatField()
