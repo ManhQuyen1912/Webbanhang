@@ -138,3 +138,31 @@ def search(req):
         user_login = "show"
     products = Product.objects.all()
     return render(req,'app/search.html',{"searched":searched,"keys":keys,'products':products,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login})
+
+def category(req):
+    categories = Category.objects.filter(is_sub = False)
+    active_category = req.GET.get('category','')
+    if active_category:
+        products = Product.objects.filter(category__slug = active_category)
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer=customer,complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "show"
+        user_login = "hidden"
+    else:
+        items = []
+        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        cartItems = order['get_cart_items']
+        user_not_login = "hidden"
+        user_login = "show"
+    context = {
+        'categories':categories,
+        'active_category':active_category,
+        'products':products,
+        'cartItems':cartItems,
+        'user_not_login':user_not_login,
+        'user_login':user_login
+    }
+    return render(req,'app/category.html',context)
