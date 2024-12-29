@@ -12,7 +12,7 @@
         {% block search %}
         <h5>Result search for {{searched}}</h5><br>
         <div class="row" style="width:100%">
-            {% for product in keys %}
+            {% for product in products %}
             <div class="col-lg-4">
               <img class="thumbnail" src="{{product.image.url}}">
               <div class="box-element product">

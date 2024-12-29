@@ -33,10 +33,9 @@
                       Product
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Food</a></li>
-                      <li><a class="dropdown-item" href="#">Mobile</a></li>
-                      <!-- <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                      {% for category in categories %}
+                      <li><a href="{% url 'category' %}?category={{category.slug}}" class="dropdown-item">{{category.name}}</a></li>
+                      {% endfor %}
                     </ul>
                   </li>
                   <li class="nav-item">

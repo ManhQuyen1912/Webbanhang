@@ -64,8 +64,15 @@ def home(req):
         cartItems = order['get_cart_items']
         user_not_login = "hidden"
         user_login = "show"
+    categories = Category.objects.filter(is_sub = False)
     products = Product.objects.all()
-    context={'products': products,'cartItems': cartItems,'user_not_login':user_not_login,'user_login':user_login}
+    context={
+        'categories':categories,
+        'products': products,
+        'cartItems': cartItems,
+        'user_not_login':user_not_login,
+        'user_login':user_login
+    }
     return render(req,'app/home.html',context)
 
 def cart(req):
