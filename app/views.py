@@ -15,20 +15,7 @@ def register(request):
             user = form.save()
             Customer.objects.create(user=user)
             return redirect('login')
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-        user_not_login = "show"
-        user_login = "hidden"
-    else:
-        items = []
-        order = {'order.get_cart_items':0,'order.get_sum_total':0}
-        cartItems = order['get_cart_items']
-        user_not_login = "hidden"
-        user_login = "show"
-    context = {'form': form,'user_not_login':user_not_login,'user_login':user_login}
+    context = {'form': form}
     return render(request, 'app/register.html', context)
 
 def loginPage(req):

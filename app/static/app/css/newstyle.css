@@ -15,7 +15,7 @@ img{
 
 a{
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 
 body{
@@ -37,32 +37,26 @@ nav{
     max-width: 80px;
 }
 
-.nav-link{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+.nav-link a:not(:last-child){
+    margin-right: 20px;
 }
 
-.link a{
-    position: relative;
-    padding-bottom: 0.75rem;
-    color: #000;
+nav .login button,nav .nav-link button{
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
 }
 
-.link a::after{
-    content: "";
-    position: absolute;
-    height:2px;
-    width: 0;
-    bottom:0;
-    left:0;
-    background-color: #1d4ed8;
-    transition: all 0.3s ease;
+nav .login button.signup,nav .nav-link button.signup{
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    margin-left:14px;
 }
 
-.link a:hover::after{
-    width: 70%;
+nav .login button.signup:hover,nav .nav-link button.signup:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .cart{
@@ -71,7 +65,7 @@ nav{
 }
 
 #cart-icon{
-    max-width:35px;
+    font-size:35px;
 }
 
 #cart-total{
