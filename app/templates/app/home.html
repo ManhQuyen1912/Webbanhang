@@ -39,6 +39,9 @@
   {% endfor %}
 </div> -->
 <div class="row-product">
+  <h2 class="separator">
+    Hot Sales
+  </h2>
   <div class="product-category">
     {% for category in categories %}
     <a href="#">{{category.name}}</a>
@@ -51,7 +54,7 @@
       <img src="{{product.image.url}}" alt="">
       <div class="info">
         <div>
-          <h5>{{product.name}}</h5>
+          <h5>{{product.name|truncatewords:5 }}</h5>
           <div class="price">
             <p>$ {{product.price}}</p>
           </div>

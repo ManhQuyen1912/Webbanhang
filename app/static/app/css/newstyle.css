@@ -37,25 +37,25 @@ nav{
     max-width: 80px;
 }
 
-.nav-link a:not(:last-child){
+.nav-link a:not(:last-child),.nav-user a:not(:last-child){
     margin-right: 20px;
 }
 
-nav .login button,nav .nav-link button{
+nav .login button,nav .nav-user button{
     padding: 8px 14px;
     border: none;
     cursor: pointer;
     background-color: transparent;
 }
 
-nav .login button.signup,nav .nav-link button.signup{
+nav .login button.signup,nav .nav-user button.signup{
     background-color: #000;
     color: #fff;
     border-radius: 4px;
     margin-left:14px;
 }
 
-nav .login button.signup:hover,nav .nav-link button.signup:hover{
+nav .login button.signup:hover,nav .nav-user button.signup:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
@@ -168,9 +168,12 @@ footer .column > a:hover{
 #carouselExampleAutoplaying{
     position: relative;
     overflow: hidden;
-    max-height: 380px;
+    /* max-height: 380px; */
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-position: 69%;
+    background-size: cover;
 }
 
 .carousel-inner img{
@@ -235,7 +238,7 @@ footer .column > a:hover{
 }
 
 .row-product .product-list .item .info h5{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .row-product .product-list .item .info .price > p{
@@ -293,4 +296,82 @@ footer .column > a:hover{
 .view-more button:hover{
     color: #fff;
     background: #0f2182;
+}
+
+h2 .separator{
+    padding: 0 80px;
+    font-size: 40px;
+    margin-top: 40px;
+}
+
+@media screen and (max-width: 1400px) {
+    nav, .product-list, h2 .separator{
+        padding: 0 40px;
+    }
+    .row-product .product-list .item img {
+        width: 220px;
+        height: 220px;
+    }
+    .row-product .product-list{
+        flex-wrap: wrap;
+        row-gap: 30px;
+        justify-content: space-between;
+    }
+    footer{
+        padding: 40px 40px 0 40px;
+    }
+
+}
+@media screen and (max-width: 1200px){
+    h2.separator{
+        font-size: 34px;
+    }
+    .row-product .product-list .item img {
+        width: 200px;
+        height: 200px;
+    }
+    .row-product .product-list{
+        flex-wrap: wrap;
+        row-gap: 30px;
+    }
+    .row-product .product-list .item{
+        width: 48%;
+    }
+    .row-product .product-list .item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width:1082px){
+    nav a,.form-control,.btn{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .nav-logo{
+        max-width: 70px;
+    }
+    .nav-link{
+        display:none;
+    }
+    footer{
+        grid-template-columns: repeat(2,1fr);
+    }
+    footer .column{
+        justify-items: center;
+    }
+}
+
+@media screen and (max-width:768px){
+    .nav-user{
+        display: none;
+    }
+    h2.separator{
+        font-size:30px;
+    }
+    .row-product .product-list .item{
+        width: 47%;
+    }
 }

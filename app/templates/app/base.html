@@ -88,7 +88,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form> 
           {% if user.is_authenticated %}
-          <div class="nav-link">
+          <div class="nav-user">
             <a class="username">Hello {{request.user}}</a>
             <a href="{% url 'logout' %}"><button class="signup">Logout</button></a>
           </div>
