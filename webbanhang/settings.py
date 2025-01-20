@@ -85,7 +85,7 @@ DATABASES = {
     #     'HOST': 'localhost',
     # }
     'default': dj_database_url.config(
-        default='mysql://root:1234@localhost:3306/sitebanhang',
+        default='postgresql://root:iKrtjZQa9ixgSN3wes6cREch5jXoe6AP@dpg-cu710tdumphs73d1hddg-a/sitebanhang',
         conn_max_age=600
     )
 }
