@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-c@s75*&g8sof1$gl)a)l=g-#2vt3+q65x#%qt5@(@z5hgv2n8t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["vnsalestore.onrender.com"]
+ALLOWED_HOSTS = ["vnsalestore.onrender.com","127.0.0.1"]
 
 
 # Application definition
@@ -76,13 +76,17 @@ WSGI_APPLICATION = 'webbanhang.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sitebanhang',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'sitebanhang',
+    #     'USER': 'root',
+    #     'PASSWORD': '1234',
+    #     'HOST': 'localhost',
+    # }
+    'default': dj_database_url.config(
+        default='mysql://root:1234@localhost:3306/sitebanhang',
+        conn_max_age=600
+    )
 }
 
 
