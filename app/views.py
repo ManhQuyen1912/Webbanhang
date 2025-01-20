@@ -72,7 +72,7 @@ def cart(req):
         user_login = "hidden"
     else:
         items = []
-        order = {'order.get_cart_items':0,'order.get_sum_money':0}
+        order = {'get_cart_items':0,'get_sum_money':0}
         cartItems = order['get_cart_items']
         user_not_login = "hidden"
         user_login = "show"
@@ -89,7 +89,7 @@ def checkout(req):
         user_login = "hidden"
     else:
         items = []
-        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        order = {'get_cart_items':0,'get_sum_total':0}
         cartItems = order['get_cart_items']
         user_not_login = "hidden"
         user_login = "show"
@@ -126,7 +126,7 @@ def search(req):
         user_login = "hidden"
     else:
         items = []
-        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        order = {'oget_cart_items':0,'get_sum_total':0}
         cartItems = order['get_cart_items']
         user_not_login = "hidden"
         user_login = "show"
@@ -147,7 +147,7 @@ def category(req):
         user_login = "hidden"
     else:
         items = []
-        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        order = {'get_cart_items':0,'get_sum_total':0}
         cartItems = order['get_cart_items']
         user_not_login = "hidden"
         user_login = "show"
@@ -171,7 +171,7 @@ def detail(req):
         user_login = "hidden"
     else:
         items = []
-        order = {'order.get_cart_items':0,'order.get_sum_total':0}
+        order = {'get_cart_items':0,'get_sum_total':0}
         cartItems = order['get_cart_items']
         user_not_login = "hidden"
         user_login = "show"
